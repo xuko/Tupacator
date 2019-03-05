@@ -1,24 +1,62 @@
-var elements = document.body.getElementsByTagName('*');
+function tupacate() {
+    var elements = document.body.getElementsByTagName('*');
 
-for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
+    var element = document.getElementById("primary-inner");
+    var info = document.getElementById("info");
 
-    for (var j = 0; j < element.childNodes.length; j++) {
-        var node = element.childNodes[j];
+    if (element && info && info.innerText.includes('tupac')) {
+        location.reload();
+    }
 
-        if (node.nodeType === 3) {
-            var text = node.nodeValue;
-            var replacedText = text;
-            replacedText = replacedText.replace(/pace/gi, 'pacce');
-            replacedText = replacedText.replace(/pacé/gi, 'paccé');
-            replacedText = replacedText.replace(/paci/gi, 'pacci');
-            replacedText = replacedText.replace(/pací/gi, 'paccí');
-            replacedText = replacedText.replace(/pac/gi, 'tupac');
-            replacedText = replacedText.replace(/paqu/gi, 'tupacqu');
+    for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
 
-            if (replacedText !== text) {
-                element.replaceChild(document.createTextNode(replacedText), node);
+        for (var j = 0; j < element.childNodes.length; j++) {
+            var node = element.childNodes[j];
+
+            if (node.nodeType === 3) {
+                var text = node.nodeValue;
+                var replacedText = text;
+                replacedText = replacedText.replace(/pace/gi, 'pacce');
+                replacedText = replacedText.replace(/pacé/gi, 'paccé');
+                replacedText = replacedText.replace(/paci/gi, 'pacci');
+                replacedText = replacedText.replace(/pací/gi, 'paccí');
+                replacedText = replacedText.replace(/tupac/gi, 'pac');
+                replacedText = replacedText.replace(/pac/gi, 'tupac');
+                replacedText = replacedText.replace(/paqu/gi, 'tupacqu');
+
+                if (replacedText !== text) {
+                    element.replaceChild(document.createTextNode(replacedText), node);
+                }
             }
         }
     }
+setTimeout(function () {
+
+
+    var element = document.getElementById("primary-inner");
+    if (element && info && info.innerText.includes('tupac')) {
+        var ytPlayer = element.firstElementChild;
+        if (ytPlayer) {
+            ytPlayer.innerHTML = "<iframe id='tupacVideo' width='" + ytPlayer.clientWidth + "' height='" + ytPlayer.clientHeight + "' src='https://www.youtube.com/embed/41qC3w3UUkU?autoplay=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen ></iframe>"
+        }
+    }
+    }, 2000)
 }
+
+var oldURL = ""
+
+//window.setInterval takes a function and executes it after
+//a given time (defined by the second parmeter)in miliseconds
+
+
+function checkURLChange() {
+    newURL = document.URL;
+    if (newURL !== oldURL) {
+        tupacate();
+        oldURL = newURL;
+    }
+}
+
+var urlChangeHandler = window.setInterval(checkURLChange, 5000)
+checkURLChange();
