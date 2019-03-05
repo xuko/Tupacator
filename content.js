@@ -17,13 +17,13 @@ function tupacate() {
             if (node.nodeType === 3) {
                 var text = node.nodeValue;
                 var replacedText = text;
-                replacedText = replacedText.replace(/pace/gi, 'pacce');
-                replacedText = replacedText.replace(/pacé/gi, 'paccé');
-                replacedText = replacedText.replace(/paci/gi, 'pacci');
-                replacedText = replacedText.replace(/pací/gi, 'paccí');
-                replacedText = replacedText.replace(/tupac/gi, 'pac');
-                replacedText = replacedText.replace(/pac/gi, 'tupac');
-                replacedText = replacedText.replace(/paqu/gi, 'tupacqu');
+                replacedText = replacedText.replace(/pace/gmi, 'pacce');
+                replacedText = replacedText.replace(/pacé/gmi, 'paccé');
+                replacedText = replacedText.replace(/paci/gmi, 'pacci');
+                replacedText = replacedText.replace(/pací/gmi, 'paccí');
+                replacedText = replacedText.replace(/tupac/gmi, 'pac');
+                replacedText = replacedText.replace(/pac/gmi, 'tupac');
+                replacedText = replacedText.replace(/paqu/gmi, 'tupacqu');
 
                 if (replacedText !== text) {
                     element.replaceChild(document.createTextNode(replacedText), node);
@@ -59,4 +59,4 @@ function checkURLChange() {
 }
 
 var urlChangeHandler = window.setInterval(checkURLChange, 5000)
-checkURLChange();
+tupacate();
