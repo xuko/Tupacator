@@ -41,6 +41,16 @@ setTimeout(function () {
             ytPlayer.innerHTML = "<iframe id='tupacVideo' width='" + ytPlayer.clientWidth + "' height='" + ytPlayer.clientHeight + "' src='https://www.youtube.com/embed/41qC3w3UUkU?autoplay=1' frameborder='0' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture' allowfullscreen ></iframe>"
         }
     }
+
+    if (document.body.innerText.includes('tupac')) {
+        var pics = document.getElementsByTagName('img');
+        var i = 1;
+        for (const pic of pics) {
+            if (pic.alt.includes('tupac') || pic.alt.includes('pac')) {
+                pic.src = 'https://loremflickr.com/320/240/tupac,2pac?random=' + i++
+            }
+        }
+    }
     }, 2000)
 }
 
@@ -60,3 +70,4 @@ function checkURLChange() {
 
 var urlChangeHandler = window.setInterval(checkURLChange, 5000)
 tupacate();
+
